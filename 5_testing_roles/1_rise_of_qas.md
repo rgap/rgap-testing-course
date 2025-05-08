@@ -2,7 +2,7 @@
 
 ## 📈 From Developer Testing to Dedicated QA Roles
 
-After developers began testing their own code manually or through simple test scripts (as shown in the previous file), software teams quickly realized that relying solely on developers to test their own work led to:
+After developers began testing their own code manually or through simple test scripts, software teams quickly realized that relying solely on developers to test their own work led to:
 
 - **Incomplete coverage** of real-world user flows
 - **Bias** (developers unintentionally avoid edge cases they didn’t consider)
