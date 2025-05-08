@@ -14,28 +14,28 @@ import unittest
 from login_utils import login
 
 
-class TestLoginDecisionTable(unittest.TestCase):
+class LoginForm(unittest.TestCase):
 
-    def test_TC1_valid_login(self):
-        # ✅ Test Case 1 (Happy Path) – login succeeds with correct credentials
+    def test_should_login_successfully(self):
+        # ✅ TC1: Valid credentials – login should succeed
         result = login("admin", "admin123")
         self.assertEqual(result["status"], "success")
         self.assertEqual(result["user"], "admin")
 
-    def test_TC2_username_missing(self):
-        # ❌ Test Case 2 – username is empty
+    def test_should_raise_error_when_username_is_missing(self):
+        # ❌ TC2: Missing username – should raise ValueError
         with self.assertRaises(ValueError) as context:
             login("", "admin123")
         self.assertIn("Invalid username format", str(context.exception))
 
-    def test_TC3_username_invalid_format(self):
-        # ❌ Test Case 3 – username has invalid characters
+    def test_should_raise_error_for_invalid_username(self):
+        # ❌ TC3: Invalid characters in username – should raise ValueError
         with self.assertRaises(ValueError) as context:
             login("hacker!", "admin123")
         self.assertIn("Invalid username format", str(context.exception))
 
-    def test_TC4_wrong_password(self):
-        # ❌ Test Case 4 – password is incorrect
+    def test_should_raise_error_when_password_is_wrong(self):
+        # ❌ TC4: Wrong password – should raise ValueError
         with self.assertRaises(ValueError) as context:
             login("admin", "wrongpass")
         self.assertIn("Incorrect password", str(context.exception))
