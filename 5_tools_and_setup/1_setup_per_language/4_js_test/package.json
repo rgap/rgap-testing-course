@@ -1,0 +1,16 @@
+{
+  "name": "4_js_test",
+  "version": "1.0.0",
+  "description": "**Jest** is a modern JavaScript testing framework created by Meta (formerly Facebook). First released in **2014**, it gained popularity for its zero-config setup, built-in assertion library, and powerful mocking tools.",
+  "main": "math.js",
+  "type": "module",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "jest": "^29.7.0"
+  }
+}

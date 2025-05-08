@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Checkout Fixed</title>
+  </head>
+  <body>
+    <h1>Product: Fancy Lamp</h1>
+    <!-- ✅ Button updates status text on click -->
+    <button id="buyButton">Buy</button>
+    <p id="status"></p>
+
+    <script>
+      document.getElementById("buyButton").addEventListener("click", () => {
+        document.getElementById("status").textContent = "💪 Proceeding to checkout...";
+      });
+    </script>
+  </body>
+</html>

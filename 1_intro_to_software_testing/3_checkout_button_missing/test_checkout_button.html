@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Test Checkout Button</title>
+  </head>
+  <body>
+    <h1>Testing if Buy button updates status...</h1>
+
+    <!-- Switch between versions -->
+    <!-- <iframe id="testFrame" src="./buggy_version/checkout_button.html" style="width: 100%; height: 200px"></iframe> -->
+    <iframe id="testFrame" src="./fixed_version/checkout_button.html" style="width: 100%; height: 200px"></iframe>
+
+    <!-- ✅ Tests whether the Buy button updates the status message -->
+    <script>
+      window.onload = function () {
+        setTimeout(() => {
+          const iframe = document.getElementById("testFrame");
+          const iframeDoc = iframe.contentDocument;
+
+          // Check if button and status elements exist
+          const button = iframeDoc.getElementById("buyButton");
+          const status = iframeDoc.getElementById("status");
+
+          if (!button || !status) {
+            console.log("❌ Test failed: Required elements not found.");
+            return;
+          }
+
+          button.click();
+
+          // Check if the status text is updated
+          setTimeout(() => {
+            const text = status.textContent.trim();
+            if (text === "💪 Proceeding to checkout...") {
+              console.log("✅ Test passed: Button updated status.");
+            } else {
+              console.log("❌ Test failed: Button click did nothing.");
+            }
+          }, 100); // wait for any click handler to update text
+        }, 300); // wait for iframe to load
+      };
+    </script>
+  </body>
+</html>
