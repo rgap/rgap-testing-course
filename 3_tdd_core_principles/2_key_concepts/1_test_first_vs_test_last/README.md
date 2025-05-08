@@ -1,38 +1,81 @@
-## 🔁 Comparing Test-First vs Test-Last Development
+# 🔁 Test-First vs Test-Last Development
 
-This folder demonstrates the difference in workflow between writing tests **before** implementation (Test-First / TDD) and writing tests **after** the code is done (Test-Last).
+This folder compares two approaches to software development:
+
+- **Test-First (TDD)** – Write the test before the implementation.
+- **Test-Last (Traditional)** – Write the code first, then add tests later (if at all).
+
+We’ll demonstrate these approaches using a common feature: **a login function** that accepts a username and password and returns a response message.
+
+---
+
+## 🧪 Why This Comparison Matters
+
+Writing tests **after** implementation often leads to:
+
+- Incomplete or missing tests
+- Code that’s hard to test or modify
+- APIs shaped by assumptions, not actual needs
+
+Writing tests **before** implementation forces you to:
+
+- Think about the interface and usage first
+- Write only the code that’s needed
+- Focus on correctness, clarity, and edge cases
 
 ---
 
 ## ✅ Test-First (TDD Style)
 
-- Starts by writing a test that fails
-- Only writes enough code to pass the test
-- Encourages small, incremental development
-- Example: `test_first_example.js`
+- Begin by writing a test that describes expected behavior
+- Then implement the smallest amount of code to make that test pass
+- Repeat the cycle for additional cases
 
-### Benefits
+**Example file:** `login_test_first.js`
 
-- Ensures test coverage
-- Helps define interfaces clearly
-- Makes refactoring safer
+This approach encourages:
+
+- Early detection of design issues
+- Minimal and focused code
+- Code that is easier to refactor later
 
 ---
 
 ## ❌ Test-Last (Traditional Style)
 
-- Starts by writing the function or module
-- Tests are added later, or sometimes not at all
-- Example: `test_last_example.js`
+- Start by writing the login function
+- Later (or never), write tests to check the result
+- Risk forgetting edge cases, or skipping tests entirely
 
-### Problems
+**Example file:** `login_test_last.js`
 
-- Tests may be incomplete or missing
-- Bugs might remain unnoticed
-- Code structure may be harder to test
+This approach often results in:
+
+- Lower test coverage
+- Poorly defined interfaces
+- Coupled or untestable logic
 
 ---
 
-## 🧪 Key Lesson
+## 🔍 Comparing Outcomes
 
-TDD isn’t just about testing — it’s about **designing software through feedback**. Writing the test first forces clarity and makes your code easier to maintain.
+| Practice   | When Test Is Written | Drives Design? | Safer Refactoring | Covers Edge Cases | Promotes Simplicity |
+| ---------- | -------------------- | -------------- | ----------------- | ----------------- | ------------------- |
+| Test-First | Before code          | ✅ Yes         | ✅ Yes            | ✅ More likely    | ✅ Yes              |
+| Test-Last  | After code           | ❌ No          | ❌ Risky          | ❌ Often missed   | ❌ Usually not      |
+
+---
+
+## 🧠 Key Insight
+
+Test-Driven Development isn’t about “writing more tests.”
+
+It’s about using **tests as a tool to design better software** — software that is predictable, maintainable, and easy to evolve.
+
+The login example shows how even a basic function becomes **clearer, cleaner, and safer** when guided by tests from the beginning.
+
+---
+
+## ▶️ Explore the Example
+
+- `login_test_first.js`: Login implemented using TDD

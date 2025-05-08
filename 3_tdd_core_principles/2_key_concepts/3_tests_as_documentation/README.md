@@ -1,37 +1,80 @@
-## 📑 Tests as Living Documentation
+# 📑 Tests as Living Documentation
 
-Tests not only verify correctness — they **explain how the system is expected to behave**. When written clearly, they double as examples and documentation for developers.
+Tests are not just tools for verifying correctness — they are also excellent **sources of truth** about how your system is supposed to behave.
+
+When written clearly, tests become **living documentation**: always up-to-date, always executable, and always precise.
 
 ---
 
-## 🧪 Example in this folder
+## 🧠 What Does "Living Documentation" Mean?
 
-The test:
+Unlike traditional documentation (e.g. comments, wikis, handbooks), tests:
+
+- Are **executable** — they don’t just describe behavior, they _enforce_ it.
+- **Fail when wrong** — outdated tests will break, making inconsistencies visible.
+- Are usually maintained by developers alongside code, so they evolve naturally.
+
+> If a test passes, then the behavior it describes is still valid.
+
+---
+
+## 💬 Example: Login Function
+
+Imagine you find this test in a codebase:
 
 ```js
-formatPrice(5); // should return "$5.00"
+const result = login({ username: "", password: "secret" });
+expect(result).toBe("❌ Missing username");
 ```
 
-...implies the function must:
+Without even reading the `login()` function’s code, you learn:
 
-- Accept a number as input
-- Format it to 2 decimal places
-- Prefix it with a dollar sign
+- It accepts an object with `username` and `password`
+- It returns a message string
+- It validates required fields and gives meaningful errors
 
-You understand what `formatPrice()` does _without reading the implementation_.
+This **explains the behavior** of the system much more clearly than a comment like:
 
----
-
-## 🧠 Benefits
-
-- Easy onboarding for new developers
-- Encourages consistent usage and formatting
-- Tests evolve along with the system
+```js
+// This function checks login fields and returns an error if empty
+```
 
 ---
 
-## ✏️ Best Practices
+## 🧪 What Makes a Good Documentation Test?
 
-- Write tests with descriptive names
-- Avoid cryptic inputs/outputs
-- Include edge cases as examples
+| Quality                | Description                                                                |
+| ---------------------- | -------------------------------------------------------------------------- |
+| ✅ Descriptive Name    | `test_login_should_fail_if_username_is_missing()` is better than `test1()` |
+| ✅ Clear Inputs        | Avoid cryptic values like `"x"` or `123`                                   |
+| ✅ Self-contained      | Anyone should be able to understand it without reading other files         |
+| ✅ Includes Edge Cases | Shows what happens in uncommon or problematic input scenarios              |
+
+---
+
+## ✨ Benefits of Documentation-Style Tests
+
+- 🧭 **Easy onboarding** for new team members
+- 📚 **Usage examples** for your functions
+- 💬 **Intentional APIs** — your test defines what matters
+- 🛠 **Debugging aid** — failing tests tell you _what broke_
+
+---
+
+## 🧱 Folder Contents
+
+- `login_documentation_test.js`: A realistic login test suite that explains the function’s behavior by example
+
+---
+
+## 🔁 Why This Matters in TDD
+
+In Test-Driven Development, the **test is the specification**.
+
+It acts as the clearest form of documentation:
+
+- What is allowed
+- What is forbidden
+- What is expected
+
+You don't have to **explain what your code does** if your tests already do.
