@@ -1,0 +1,13 @@
+config:
+  target: "http://localhost:8080"
+  plugins:
+    html-report:
+      output: tests/report/complex_report.html
+  phases:
+    - duration: 10
+      arrivalRate: 5
+
+scenarios:
+  - flow:
+      - get:
+          url: "/operacion-compleja"
